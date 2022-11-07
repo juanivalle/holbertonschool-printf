@@ -8,7 +8,7 @@ Working team:
 [@juanivalle](https://github.com/juanivalle)
 
 
-###Content
+
 > Index
 
 - [_printf](#_printf)

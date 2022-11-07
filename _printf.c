@@ -7,30 +7,40 @@
 
 int _printf(const char *format, ...)
 {
-	char *printed;
-	unsigned int i = 0;
+	int i = 0;
+	int x;
+	char c;
 	char *s;
-
 	va_list arg;
-	va_start(argumento, format);
 
-	for(printed = 0 ; *printed != '\0' ; printed++)
-	{	
-		while(*printed != '%')
+	if (format == NULL)
+		return (-1);
+
+	va_start(arg, format);
+
+	for (i = 0 ; format[i] != '\0' ; i++)
+	{
+
+		if (format[i] == '%')
 		{
-			_putchar(*printed);
-			printed++;
-		}
+			switch (format[i + 1])
+			{
+				case 'c':
+			       		c = va_arg(arg, int);
+					_putchar(c);
+					i += 2;
+					break;
 
-		switch (*printed)
-		{
-			case 'c': i = va_arg(arg, int);
-				_putchar(i);
-				break;
-
-			case 's': i = va_arg(arg, char*);
-				 _putchar(s);
-				 break;
+				case 's':
+				       	s = va_arg(arg, char*);
+					for (x = 0 ; s[x] != '\0' ; x++)
+						_putchar(s[x]);
+					i += 2;
+					break;
+			}
 		}
-	printed++
-	}	
+		_putchar(format[i]);
+	}
+	va_end(arg);
+	return (i);
+}
