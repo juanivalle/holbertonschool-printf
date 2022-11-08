@@ -7,10 +7,11 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int n;
 	int x;
 	char c;
 	char *s;
+	int i;
 	va_list arg;
 
 	if (format == NULL)
@@ -18,29 +19,35 @@ int _printf(const char *format, ...)
 
 	va_start(arg, format);
 
-	for (i = 0 ; format[i] != '\0' ; i++)
+	for (n = 0 ; format[n] != '\0' ; n++)
 	{
 
-		if (format[i] == '%')
+		if (format[n] == '%')
 		{
-			switch (format[i + 1])
+			switch (format[n + 1])
 			{
 				case 'c':
 			       		c = va_arg(arg, int);
 					_putchar(c);
-					i += 2;
+					n += 2;
 					break;
 
 				case 's':
 				       	s = va_arg(arg, char*);
 					for (x = 0 ; s[x] != '\0' ; x++)
 						_putchar(s[x]);
-					i += 2;
+					n += 2;
+					break;
+
+				case 'i':
+					i = va_arg(arg, int);
+					_putchar(i);
+					n += 2;
 					break;
 			}
 		}
-		_putchar(format[i]);
+		_putchar(format[n]);
 	}
 	va_end(arg);
-	return (i);
+	return (n);
 }
