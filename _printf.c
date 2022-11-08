@@ -21,7 +21,6 @@ int _printf(const char *format, ...)
 
 	for (n = 0 ; format[n] != '\0' ; n++)
 	{
-
 		if (format[n] == '%')
 		{
 			switch (format[n + 1])
@@ -44,9 +43,11 @@ int _printf(const char *format, ...)
 					_putchar(i);
 					n += 2;
 					break;
+
 			}
 		}
-		_putchar(format[n]);
+		if (format[n] != '%')
+			_putchar(format[n]);
 	}
 	va_end(arg);
 	return (n);
