@@ -2,7 +2,7 @@
 
 Working team:
 
-*Darian Grabino
+*Darian Grabino 
 [@dariangrabino](https://github.com/DarianGrabino)
 *Juan Valle
 [@juanivalle](https://github.com/juanivalle)
