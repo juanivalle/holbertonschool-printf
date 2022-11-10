@@ -50,7 +50,7 @@ We compile with:
 * gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 
 ## Flowchart
-![Flowchart](https://i.imgur.com/M82G0vD.png)
+![Flowchart](https://i.imgur.com/r4uikpM.png)
 
 
 
