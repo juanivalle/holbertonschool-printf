@@ -11,11 +11,11 @@ Working team:
 
 > Index
 
-- [Objetivo](#objetivo)
+- [Objective](#objective)
 - [Description](#description)
 - [Flowchart](#flowchart)
 
-## Objetivo 
+## Objective 
 
 The printf function prints a message to the screen using a "format string" that includes instructions for mixing multiple strings into the final string to display.
 
