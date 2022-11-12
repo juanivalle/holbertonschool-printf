@@ -1,68 +1,44 @@
 #include "main.h"
-
 /**
- *
- *
- */
-
+ * _printf - function that produces output according to a formaint.
+ * @format: is a character string.
+ * Return: the number of characters printed.
+ **/
 int _printf(const char *format, ...)
 {
-	int n;
-	int x;
-	char c;
-	char *s;
-	int i;
-	int cont = 0;
+	int i = 0, counter = 0;
 	va_list arg;
+	int (*f)(va_list);
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(arg, format);
-
-	for (n = 0 ; format[n] != '\0' ; n++)
+	while (format[i] != '\0')
 	{
-		if (format[n] == '%')
+		while (format[i] != '%' && format[i] != '\0')
 		{
-			switch (format[n + 1])
-			{
-				case 'c':
-			       		c = va_arg(arg, int);
-					_putchar(c);
-					cont++;
-					n += 2;
-					break;
-
-				case 's':
-				       	s = va_arg(arg, char*);
-					for (x = 0 ; s[x] != '\0' ; x++)
-					{
-						_putchar(s[x]);
-						cont++;
-					}
-					n += 2;
-					break;
-
-				case 'i':
-					i = va_arg(arg, int);
-					_putchar(i);
-					cont++;
-					n += 2;
-					break;
-
-				default :
-					_putchar(format[n]);
-					cont++;
-					break;
-
-			}
+			_putchar(format[i]);
+			counter++;
+			i++;
 		}
-		if (format[n] != '%')
+		if (format[i] == '\0')
+			return (counter);
+		f = get_op_func(&format[i + 1]);
+		if (f != NULL)
 		{
-			_putchar(format[n]);
-			cont++;
+			counter += f(arg);
+			i += 2;
+			continue;
 		}
+		if (format[i + 1] == '\0')
+			return (-1);
+		_putchar(format[i]);
+		counter++;
+		if (format[i + 1] == '%')
+			i += 2;
+		else
+			i++;
 	}
 	va_end(arg);
-	return (cont);
+	return (counter);
 }
