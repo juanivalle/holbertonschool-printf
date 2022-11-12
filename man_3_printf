@@ -1,0 +1,47 @@
+.\" Manpage for _printf.
+.TH _printf		Linux programmer's manual        _printf
+.SH NAME
+_printf \- produces formated output to stdout.
+.SH SYNOPSIS
+#include "main.h"
+.TP
+int _printf(const char *format, ...)
+
+.SH DESCRIPTION
+The function _printf() prints according to format specifiers the additional arguments following format are formatted and inserted in the resulting string replacing their respective specifiers.
+
+FORMAT is the string which has the conversors and what is going to be printed.
+
+.SH Conversores specifiers
+.TP
+c - Prints argument of type character.
+.TP
+s - Prints argument of type string.
+.TP
+%% - Prints a %.
+.TP
+d - Prints argument of type decimal.
+.TP
+i - Prints arguments of type integer.
+.TP
+
+.SH RETURN VALUE
+On success, the total number of characters written is returned.
+.TP
+If success is not met, one negative is returned.
+.SH EXAMPLES
+Print a string:
+
+char *string = "Hello";
+.br
+_printf("%s\n", string);
+
+Print a integer:
+
+int a = 5;
+.br
+_printf("%i\n", a);
+
+.SH AUTHOR
+.B Writing by Darian Grabino and Juan Valle
+ 
